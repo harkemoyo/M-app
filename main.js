@@ -22,12 +22,18 @@ function fillInput() {
     let inputValue = inputField.value
     
     push(myListDb, inputValue)
-    // appended li
-    const li = document.createElement('li')
-    li.appendChild(document.createTextNode(`${inputValue}`))
-    shoppingList.append(li)
-    
+   
+    renderDom(inputValue, myListDb)
     console.log(`${inputValue} added to database`)
 }
 
+
+// rendering html
+function renderDom(dom) {
+     // appended li
+     const li = document.createElement('li')
+     li.appendChild(document.createTextNode(`${dom}`))
+     shoppingList.append(li)
+     inputField.value = ""
+}
 
