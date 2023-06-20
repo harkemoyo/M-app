@@ -33,7 +33,7 @@ input {
 }
 
 button {
-    background-color: #AC485A;
+   
     padding: 15px;
     border: 0;
     border-radius: 8px;
@@ -71,24 +71,25 @@ input {
     border: 0;
     border-radius: 8px;
     font-size: 20px;
-    color: #432000;
+    color: #430012;
     text-align: center;
     margin: 10px 0;
     font-family: 'Rubik', sans-serif;
 }
 
 button {
-    background-color: #AC485A;
+   
+    background-color: #430000;
     padding: 15px;
     border: 0;
     border-radius: 8px;
     font-size: 20px;
-    color: #FDFDFD;
+    color: #FFFDF8;
     font-family: 'Rubik', sans-serif;
 }
 
 button:hover {
-    background-color: #432000;
+    filter: brightness(50);
     cursor: pointer;
 }
 
@@ -111,6 +112,6 @@ ul li {
 }
 
 ul li:hover {
-    background-color: #FFECC7;
+    filter: brightness(50);
     cursor: pointer;
 }

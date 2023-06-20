@@ -23,23 +23,37 @@ function fillInput() {
 
         push(myListDb, inputValue)
         clearInput()
-        clearShoppinglist()
-        renderDom(inputValue, myListDb)
-        console.log(`${inputValue} added to database`)
+        renderDom(inputValue)
+}
+
+// rendering html
+function renderDom(dom) {
+    // appended li
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(`${dom}`))
+    shoppingList.append(li)
+    
 }
 
 // get value from object format to array
 onValue(myListDb, function (snapshot){
     // turning it into a array for loop to work
     
-            let itemsArray = Object.values(snapshot.val())
-    
+            let itemsArray = Object.entries(snapshot.val())
+            clearShoppinglist()
             for (let i = 0; i < itemsArray.length; i++) {
-            renderDom(itemsArray[i])
+                let currentItem = itemsArray[i]
+                // getting specific id
+                
+
+                let currentItemId = currentItem[0]
+                let currentItemValue = currentItem[1]
+                
+            renderDom(currentItemValue)
     
             }
-    
-        
+            
+            
     })
 
 // clearlist items
@@ -52,12 +66,5 @@ function clearShoppinglist(){
 function clearInput() {
     inputField.value = ""
 }
-// rendering html
-function renderDom(dom) {
-     // appended li
-     const li = document.createElement('li')
-     li.appendChild(document.createTextNode(`${dom}`))
-     shoppingList.append(li)
-     
-}
+
 
