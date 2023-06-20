@@ -19,18 +19,19 @@ const shoppingList = document.getElementById("shopping-list")
 
 addCart.addEventListener("click", fillInput)
 function fillInput() {
-    let inputValue = inputField.value
-    
-    push(myListDb, inputValue)
-   clearInput()
-   clearShoppinglist()
-   renderDom(inputValue, myListDb)
-    console.log(`${inputValue} added to database`)
+        let inputValue = inputField.value
+
+        push(myListDb, inputValue)
+        clearInput()
+        clearShoppinglist()
+        renderDom(inputValue, myListDb)
+        console.log(`${inputValue} added to database`)
 }
 
 // clearlist items
 function clearShoppinglist(){
     shoppingList.innerHTML = ""
+   
 }
 
 // clear input field
@@ -48,12 +49,13 @@ function renderDom(dom) {
 // get value from object format to array
 onValue(myListDb, function (snapshot){
 // turning it into a array for loop to work
-    let itemsArray = Object.values(snapshot.val())
 
-    for (let i = 0; i < itemsArray.length; i++) {
+        let itemsArray = Object.values(snapshot.val())
+
+        for (let i = 0; i < itemsArray.length; i++) {
         renderDom(itemsArray[i])
-        
-    }
+
+        }
 
     
 })
