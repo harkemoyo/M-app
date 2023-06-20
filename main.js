@@ -28,6 +28,20 @@ function fillInput() {
         console.log(`${inputValue} added to database`)
 }
 
+// get value from object format to array
+onValue(myListDb, function (snapshot){
+    // turning it into a array for loop to work
+    
+            let itemsArray = Object.values(snapshot.val())
+    
+            for (let i = 0; i < itemsArray.length; i++) {
+            renderDom(itemsArray[i])
+    
+            }
+    
+        
+    })
+
 // clearlist items
 function clearShoppinglist(){
     shoppingList.innerHTML = ""
@@ -46,16 +60,4 @@ function renderDom(dom) {
      shoppingList.append(li)
      
 }
-// get value from object format to array
-onValue(myListDb, function (snapshot){
-// turning it into a array for loop to work
 
-        let itemsArray = Object.values(snapshot.val())
-
-        for (let i = 0; i < itemsArray.length; i++) {
-        renderDom(itemsArray[i])
-
-        }
-
-    
-})
