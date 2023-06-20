@@ -1,3 +1,4 @@
+import { ready } from "./index.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
@@ -9,8 +10,7 @@ const app = initializeApp(appSettings)
 const db = getDatabase(app)
 // reference database
 const myListDb = ref(db, "Shopping")
-
-
+console.log(ready());
 
 const inputField = document.getElementById("input-field")
 const addCart = document.getElementById("add-button")
