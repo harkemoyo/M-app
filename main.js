@@ -23,3 +23,5 @@ function fillInput() {
     
     console.log(`${inputValue} added to database`)
 }
+
+// appending ul
