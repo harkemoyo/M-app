@@ -1,6 +1,6 @@
 import { ready } from "./index.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://add-to-cart-8291f-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -23,10 +23,17 @@ function fillInput() {
     
     push(myListDb, inputValue)
    clearInput()
-    renderDom(inputValue, myListDb)
+   clearShoppinglist()
+   renderDom(inputValue, myListDb)
     console.log(`${inputValue} added to database`)
 }
 
+// clearlist items
+function clearShoppinglist(){
+    shoppingList.innerHTML = ""
+}
+
+// clear input field
 function clearInput() {
     inputField.value = ""
 }
@@ -38,4 +45,15 @@ function renderDom(dom) {
      shoppingList.append(li)
      
 }
+// get value from object format to array
+onValue(myListDb, function (snapshot){
+// turning it into a array for loop to work
+    let itemsArray = Object.values(snapshot.val())
 
+    for (let i = 0; i < itemsArray.length; i++) {
+        renderDom(itemsArray[i])
+        
+    }
+
+    
+})
