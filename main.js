@@ -24,7 +24,7 @@ function fillInput() {
         
 
         push(myListDb, inputValue)
-        
+
         clearInput()  
 }
 
@@ -63,8 +63,8 @@ onValue(myListDb, function (snapshot){
         // getting specific id
       
 
-        let currentItemId = currentItem[0]
-        let currentItemValue = currentItem[1]
+        // let currentItemId = currentItem[0]
+        // let currentItemValue = currentItem[1]
          
       renderDom(currentItem)
     
