@@ -26,32 +26,6 @@ function fillInput() {
         renderDom(inputValue)
 }
 
-// rendering html
-function renderDom(item) {
-
-    let itemsId = item[0]
-    let itemsTitle = item[1]
-
-    // appended li
-    const li = document.createElement('li')
-    
-    li.textContent = itemsTitle
-    
-    shoppingList.append(li)
-
-    // remove shopinglist function
-
-li.addEventListener("dblclick", removeUsedList)
-function removeUsedList(){
-
-    let itemIDLocation = ref(db, `"Shopping"/${itemsId}`)
-  remove()
-}
-    
-}
-
-
-
 
 // get value from object format to array
 onValue(myListDb, function (snapshot){
@@ -70,9 +44,35 @@ onValue(myListDb, function (snapshot){
             renderDom(currentItem)
     
             }
-            
-            
+    
     })
+
+
+    // rendering html
+function renderDom(item) {
+
+    let itemsId = item[0]
+    let itemsTitle = item[1]
+
+    // appended li
+    const li = document.createElement('li')
+    
+    li.textContent = itemsTitle
+    
+    shoppingList.append(li)
+
+    // remove shopinglist function
+
+li.addEventListener("dblclick", removeUsedList)
+function removeUsedList(){
+
+    let itemIDLocation = ref(db, `"Shopping"/${itemsId}`)
+    remove(itemIDLocation)
+}
+    
+}
+
+
 
 // clearlist items
 function clearShoppinglist(){
