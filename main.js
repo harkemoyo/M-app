@@ -31,8 +31,7 @@ function fillInput() {
 document.addEventListener('keydown', enterBtn)
 
 function enterBtn(e){
-    console.log(e)
-    if(e.key === 'enter'){
+    if(e.key === 'Enter'){
         fillInput()
     }
 }
