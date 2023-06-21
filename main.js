@@ -20,21 +20,33 @@ const shoppingList = document.getElementById("shopping-list")
 addCart.addEventListener("click", fillInput)
 function fillInput() {
         let inputValue = inputField.value
+        
 
         push(myListDb, inputValue)
         clearInput()
-        renderDom(inputValue)
+   
+        renderDom(inputValue, myListDb)
+    
 }
+document.addEventListener('keydown', enterBtn)
 
+function enterBtn(e){
+    console.log(e)
+    if(e.key === 'enter'){
+        fillInput()
+    }
+}
 
 // get value from object format to array
 onValue(myListDb, function (snapshot){
     // adding conditional statement to dataBase to allow remove to work on the last itemlist
-
+    clearShoppinglist()
     if (snapshot.exists()){
+        
         // turning it into a array for loop to work
         let itemsArray = Object.entries(snapshot.val())
-        clearShoppinglist()
+       
+        
         for (let i = 0; i < itemsArray.length; i++) {
         const currentItem = itemsArray[i]
         // getting specific id
@@ -42,8 +54,7 @@ onValue(myListDb, function (snapshot){
 
         // let currentItemId = currentItem[0]
         // let currentItemValue = currentItem[1]
-
-        renderDom(currentItem)
+      renderDom(currentItem)
     
             }
     }else{
@@ -57,26 +68,27 @@ onValue(myListDb, function (snapshot){
 
     // rendering html
 function renderDom(item) {
-
+   
     let itemsId = item[0]
     let itemsTitle = item[1]
 
     // appended li
     const li = document.createElement('li')
-    
+   
     li.textContent = itemsTitle
-    
     shoppingList.append(li)
+
 
     // remove shopinglist function
 
 li.addEventListener("click", removeUsedList)
-function removeUsedList(){
 
+function removeUsedList(){
     let itemIdLocation = ref(db, `Shopping/${itemsId}`)
     remove(itemIdLocation)
-}
     
+}
+  
 }
 
 
