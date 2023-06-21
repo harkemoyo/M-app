@@ -70,8 +70,12 @@ onValue(myListDb, function (snapshot){
       renderDom(currentItem)
     
             }
+    }else if (shoppingList) {
+        shoppingList.textContent = "Nothing to display"
+        shoppingList.classList.add("add-button")
     }else{
-        shoppingList.innerHTML = "Nothing to display"
+        shoppingList.textContent = "Nothing to display"
+        shoppingList.classList.remove("add-button")
     }
     
     
