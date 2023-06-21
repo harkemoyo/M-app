@@ -28,6 +28,8 @@ function fillInput() {
         renderDom(inputValue, myListDb)
     
 }
+
+// keyboard function
 document.addEventListener('keydown', enterBtn)
 
 function enterBtn(e){
