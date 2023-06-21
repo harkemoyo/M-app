@@ -30,11 +30,20 @@ function fillInput() {
 }
 
 // keyboard function
-document.addEventListener('keydown', enterBtn)
+document.addEventListener('keydown', enterBtnKey)
+document.addEventListener('keyup', releaseBtnKey)
 
-function enterBtn(e){
+function enterBtnKey(e){
     if(e.key === 'Enter'){
+        addCart.style.background = 'crimson'
         fillInput()
+    }
+}
+
+function releaseBtnKey(e) {
+    if(e.key === 'Enter'){
+        addCart.style.background = '#430000'
+        
     }
 }
 
