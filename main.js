@@ -17,6 +17,7 @@ const inputField = document.getElementById("input-field")
 const addCart = document.getElementById("add-button")
 const shoppingList = document.getElementById("shopping-list")
 
+
 addCart.addEventListener("click", fillInput)
 function fillInput() {
         let inputValue = inputField.value
@@ -29,10 +30,7 @@ function fillInput() {
     
 }
 
-// keyboard function
-document.addEventListener('keydown', enterBtnKey)
-document.addEventListener('keyup', releaseBtnKey)
-
+// keyboard functions
 function enterBtnKey(e){
     if(e.key === 'Enter'){
         addCart.style.background = 'crimson'
@@ -46,6 +44,11 @@ function releaseBtnKey(e) {
         
     }
 }
+// keyboard eventlisteners
+document.addEventListener('keydown', enterBtnKey)
+document.addEventListener('keyup', releaseBtnKey)
+
+
 
 // get value from object format to array
 onValue(myListDb, function (snapshot){
@@ -77,21 +80,22 @@ onValue(myListDb, function (snapshot){
 
 
     // rendering html
+   
 function renderDom(item) {
    
     let itemsId = item[0]
     let itemsTitle = item[1]
 
     // appended li
-    const li = document.createElement('li')
    
+    const li = document.createElement('li')
     li.textContent = itemsTitle
     shoppingList.append(li)
 
 
     // remove shopinglist function
 
-li.addEventListener("click", removeUsedList)
+    li.addEventListener("click", removeUsedList)
 
 function removeUsedList(){
     let itemIdLocation = ref(db, `Shopping/${itemsId}`)
