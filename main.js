@@ -24,10 +24,8 @@ function fillInput() {
         
 
         push(myListDb, inputValue)
-        clearInput()
-   
-        renderDom(inputValue, myListDb)
-    
+        
+        clearInput()  
 }
 
 // keyboard functions
@@ -65,8 +63,8 @@ onValue(myListDb, function (snapshot){
         // getting specific id
       
 
-        // let currentItemId = currentItem[0]
-        // let currentItemValue = currentItem[1]
+        let currentItemId = currentItem[0]
+        let currentItemValue = currentItem[1]
          
       renderDom(currentItem)
     
@@ -99,8 +97,9 @@ function renderDom(item) {
 
 function removeUsedList(){
     let itemIdLocation = ref(db, `Shopping/${itemsId}`)
-    remove(itemIdLocation)
    
+    remove(itemIdLocation)
+    
     
 }
 }
