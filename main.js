@@ -41,7 +41,12 @@ function renderDom(item) {
 
     // remove shopinglist function
 
+li.addEventListener("dblclick", removeUsedList)
+function removeUsedList(){
 
+    let itemIDLocation = ref(db, `"Shopping"/${itemsId}`)
+  remove()
+}
     
 }
 
