@@ -27,13 +27,26 @@ function fillInput() {
 }
 
 // rendering html
-function renderDom(dom) {
+function renderDom(item) {
+
+    let itemsId = item[0]
+    let itemsTitle = item[1]
+
     // appended li
     const li = document.createElement('li')
-    li.appendChild(document.createTextNode(`${dom}`))
+    
+    li.textContent = itemsTitle
+    
     shoppingList.append(li)
+
+    // remove shopinglist function
+
+
     
 }
+
+
+
 
 // get value from object format to array
 onValue(myListDb, function (snapshot){
@@ -46,10 +59,10 @@ onValue(myListDb, function (snapshot){
                 // getting specific id
                 
 
-                let currentItemId = currentItem[0]
-                let currentItemValue = currentItem[1]
+                // let currentItemId = currentItem[0]
+                // let currentItemValue = currentItem[1]
                 
-            renderDom(currentItemValue)
+            renderDom(currentItem)
     
             }
             
