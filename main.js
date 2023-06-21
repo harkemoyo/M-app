@@ -1,6 +1,6 @@
 import { ready } from "./index.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue, remove,  } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://add-to-cart-8291f-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -17,7 +17,7 @@ const inputField = document.getElementById("input-field")
 const addCart = document.getElementById("add-button")
 const shoppingList = document.getElementById("shopping-list")
 
-
+ 
 addCart.addEventListener("click", fillInput)
 function fillInput() {
         let inputValue = inputField.value
@@ -54,32 +54,28 @@ document.addEventListener('keyup', releaseBtnKey)
 onValue(myListDb, function (snapshot){
     // adding conditional statement to dataBase to allow remove to work on the last itemlist
     clearShoppinglist()
-    if (snapshot.exists()){
+    if (snapshot.exists())  {
         
         // turning it into a array for loop to work
         let itemsArray = Object.entries(snapshot.val())
        
-        
+       
         for (let i = 0; i < itemsArray.length; i++) {
         const currentItem = itemsArray[i]
         // getting specific id
-
+      
 
         // let currentItemId = currentItem[0]
         // let currentItemValue = currentItem[1]
+         
       renderDom(currentItem)
     
             }
-    }else if (shoppingList) {
-        shoppingList.textContent = "Nothing to display"
-        shoppingList.classList.add("add-button")
     }else{
         shoppingList.textContent = "Nothing to display"
-        shoppingList.classList.remove("add-button")
+        shoppingList.classList.add("add-button")
+        
     }
-    
-    
-    
     })
 
 
@@ -96,7 +92,7 @@ function renderDom(item) {
     li.textContent = itemsTitle
     shoppingList.append(li)
 
-
+    shoppingList.classList.remove("add-button")
     // remove shopinglist function
 
     li.addEventListener("click", removeUsedList)
@@ -104,9 +100,9 @@ function renderDom(item) {
 function removeUsedList(){
     let itemIdLocation = ref(db, `Shopping/${itemsId}`)
     remove(itemIdLocation)
+   
     
 }
-  
 }
 
 

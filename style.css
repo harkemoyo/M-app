@@ -49,14 +49,17 @@ button {
 
 button:hover {
     filter: brightness(50);
+   
     cursor: pointer;
 }
+
 .add-button {
-    background-color:  #DCE1EB;
+    background-color: #DCE1EB;
     padding: 1rem;
     border-radius: 8px;
     font-size: 20px;
-    color: #333;
+    color: #141313e5;
+    
 }
 
 
