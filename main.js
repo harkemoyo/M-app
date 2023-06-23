@@ -81,8 +81,8 @@ onValue(myListDb, function (snapshot){
    
 function renderDom(item) {
    
-    let itemsId = item[0]
-    let itemsTitle = item[1]
+    let [itemsId,itemsTitle] = item
+   
 
     // appended li
    
