@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "firebase": "^9.23.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^15.6.0"
   }
 }
